@@ -2,5 +2,6 @@ Please use automate.sh for running all the automation tasks to being up the post
 
 Pre-requisites:
 
-1. Amazon linux/Centos 7 system
-2. I have secured the server by using hosts.deny file, changing the ssh port and disabling root login and password authentication to force only key based logins.
+1. Amazon linux/Centos 7 system.
+2. The script should be run from the root user.
+3. I have secured the server by using hosts.deny file, changing the ssh port and disabling root login and password authentication to force only key based logins.
