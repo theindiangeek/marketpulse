@@ -2,7 +2,6 @@
 #Task: https://paper.dropbox.com/doc/Devops-Coding-Test-2-ncHx8O1kZ9H9OQbMGHWQP
 
 #1. System settings
-sudo su
 
 #Enable SSH
 yum install openssh-server.x86_64 -y
