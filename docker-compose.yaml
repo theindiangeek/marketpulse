@@ -1,0 +1,48 @@
+
+version: '2'
+
+services:
+  pg-master:
+    build: '.'
+    image: 'postgres:v1'
+    restart: 'always'
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      PGDATA: '/var/lib/postgresql/data/pgdata'
+    volumes:
+     - '/var/lib/postgresql/data'
+    ports:
+     - '5432:5432'
+
+  pg-slave-1:
+    build: '.'
+    image: 'postgres:v1'
+    restart: 'always'
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      PGDATA: '/var/lib/postgresql/data/pgdata'
+      REPLICATE_FROM: 'pg-master'
+    volumes:
+     - '/var/lib/postgresql/data'
+    ports:
+     - '5433:5432'
+    links:
+     - 'pg-master'
+
+  pg-slave-2:
+    build: '.'
+    image: 'postgres:v1'
+    restart: 'always'
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      PGDATA: '/var/lib/postgresql/data/pgdata'
+      REPLICATE_FROM: 'pg-master'
+    volumes:
+     - '/var/lib/postgresql/data'
+    ports:
+     - '5434:5432'
+    links:
+     - 'pg-master'
