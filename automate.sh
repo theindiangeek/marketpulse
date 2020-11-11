@@ -44,6 +44,9 @@ docker build -t postgres:v1 .
 yum install postgresql.x86_64 -y
 docker-compose up -d
 
+#Giving 2 mins for the postgres setup to boot up and become ready:
+sleep 120
+
 #Verify Master instance to allow write operations
 PGPASSWORD=postgres psql -h localhost -p 5432 -Upostgres postgres -c 'CREATE DATABASE testing;'
 
